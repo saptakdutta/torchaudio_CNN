@@ -12,17 +12,17 @@ from torchaudio.datasets import SPEECHCOMMANDS
 import os
 %matplotlib inline
 
-#%% Check the device
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-print('Using {} device'.format(device))
+#%%Check device details
+# setting device on GPU if available, else CPU
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+print('Using device:', device)
 
 #Additional Info when using cuda
-if device == 'cuda':
-    print(torch.cuda.get_device_name(0))
-    print('Memory Usage:')
-    print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
-    print('Cached:   ', round(torch.cuda.memory_reserved(0)/1024**3,1), 'GB')
-    print('Available:   ', round(torch.cuda.get_device_properties(0).total_memory/1024**3,1), 'GB')
+if device.type == 'cuda':
+    torch_mem_info = torch.cuda.mem_get_info()
+    print('GPU Model:',torch.cuda.get_device_name(0))
+    print('Globally available memory:', round(torch_mem_info[0]/1024**3,1), 'GB')
+    print('Total GPU memory:', round(torch_mem_info[1]/1024**3,1), 'GB')
 
 #%% download data
 class SubsetSC(SPEECHCOMMANDS):

@@ -42,6 +42,15 @@ if device.type == 'cuda':
     print('Globally available:', round(torch_mem_info[0]/1024**3,1), 'GB')
     print('Total:   ', round(torch_mem_info[1]/1024**3,1), 'GB')
 ```
+The output should be as follows (will vary on your own device)
+
+```
+Using device: cuda
+GPU Model: NVIDIA GeForce RTX 3080
+Globally available memory: 9.1 GB
+Total GPU memory: 9.8 GB
+```
+
 Use the approach_2.py script to get access to the vocabulary dataset for your own training
 
 ## Accuracy
