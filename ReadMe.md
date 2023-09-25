@@ -29,18 +29,16 @@ print(f"Expected: {utterance}. Predicted: {predict(waveform)}.")
 - You can check if you're using a cuda device as follows:
 
 ```
-torch_mem_info = torch.cuda.mem_get_info()
 # setting device on GPU if available, else CPU
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print('Using device:', device)
-print()
 
 #Additional Info when using cuda
 if device.type == 'cuda':
-    print(torch.cuda.get_device_name(0))
-    print('Memory Usage:')
-    print('Globally available:', round(torch_mem_info[0]/1024**3,1), 'GB')
-    print('Total:   ', round(torch_mem_info[1]/1024**3,1), 'GB')
+    torch_mem_info = torch.cuda.mem_get_info()
+    print('GPU Model:',torch.cuda.get_device_name(0))
+    print('Globally available memory:', round(torch_mem_info[0]/1024**3,1), 'GB')
+    print('Total GPU memory:', round(torch_mem_info[1]/1024**3,1), 'GB')
 ```
 The output should be as follows (will vary on your own device)
 
