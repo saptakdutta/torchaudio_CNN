@@ -3,7 +3,7 @@
 # 2. conda install -n base conda-libmamba-solver
 # to create this venv run: conda env create -f environment.yml --solver=libmamba || mamba env create -f environment.yml
 # to destroy this venv run: conda remove -n torchaudio_example --all || mamba remove -n torchaudio_example --all
-name: torchaudio_example
+name: torchaudio_CNN
 channels:
 - nodefaults
 - conda-forge
